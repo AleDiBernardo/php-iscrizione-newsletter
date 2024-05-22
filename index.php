@@ -27,7 +27,7 @@ if(isset($_GET['email'])){
         <?php if ($isEmailValid): ?>
             <h1 class="alert alert-success">L'email è valida</h1>
         <?php else: ?>
-            <h1 class="alert alert-warning">L'email non è valida</h1>
+            <h1 class="alert alert-danger">L'email non è valida</h1>
         <?php endif;?>
 
         <form action="index.php" method="GET" class="m-3">

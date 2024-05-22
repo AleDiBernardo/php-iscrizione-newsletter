@@ -1,12 +1,20 @@
 <?php
 
 require_once __DIR__ . "/partials/functions.php";
-$user_email = $_GET['email'];
+
+$isEmailValid = null;
+$error_alert = false;
+
+if (isset($_GET['email'])) {
+    $user_email = $_GET['email'];
 
 
+    if ($isEmailValid = validator($user_email)) {
+        header("Location: thankyou.php");
+        die();
+    }
 
-if(isset($_GET['email'])){
-    $isEmailValid = validator($user_email);
+    $error_alert = true;
 }
 
 ?>
@@ -24,12 +32,9 @@ if(isset($_GET['email'])){
 <body>
     <div class="container mt-5">
 
-        <?php if ($isEmailValid): ?>
-            <h1 class="alert alert-success">L'email è valida</h1>
-        <?php else: ?>
+        <?php if($error_alert): ?>
             <h1 class="alert alert-danger">L'email non è valida</h1>
-        <?php endif;?>
-
+        <?php endif; ?>
         <form action="index.php" method="GET" class="m-3">
             <div class="mb-3 d-flex flex-column w-25">
                 <label for="email">Inserisci l'email:</label>

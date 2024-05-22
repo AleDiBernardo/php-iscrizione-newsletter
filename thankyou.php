@@ -1,5 +1,11 @@
 <?php
 
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+$user_email = $_SESSION['email'];
+
 
 ?>
 
@@ -12,6 +18,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Benvenuto</h1>
+    <h1>Benvenuto, la tua email è <?= $user_email?></h1>
 </body>
 </html>

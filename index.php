@@ -1,20 +1,12 @@
 <?php
 
+require_once __DIR__ . "/partials/functions.php";
 $user_email = $_GET['email'];
-$isEmailValid = false;
 
-// $pattern = '/^[^@]+@[^@]+\.[^@]+$/';
 
 
 if(isset($_GET['email'])){
-    
-    if (str_contains($user_email, "@") && str_contains($user_email, ".")  ) {
-        $isEmailValid = true;
-    }
-
-    // if(preg_match($user_email, $pattern)){
-    //     echo "ciao";
-    // }
+    $isEmailValid = validator($user_email);
 }
 
 ?>
@@ -32,21 +24,21 @@ if(isset($_GET['email'])){
 <body>
     <div class="container mt-5">
 
-        <?php if($isEmailValid): ?>
+        <?php if ($isEmailValid): ?>
             <h1 class="alert alert-success">L'email è valida</h1>
         <?php else: ?>
             <h1 class="alert alert-warning">L'email non è valida</h1>
-        <?php endif; ?>
-    
+        <?php endif;?>
+
         <form action="index.php" method="GET" class="m-3">
-            <div class="mb-3">
-                <label for="email"></label>
+            <div class="mb-3 d-flex flex-column w-25">
+                <label for="email">Inserisci l'email:</label>
                 <input type="text" name="email" id="">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 
-    
+
 </body>
 </html>

@@ -3,6 +3,7 @@
 require_once __DIR__ . "/partials/functions.php";
 
 $isEmailValid = null;
+
 $error_alert = false;
 
 if (isset($_GET['email'])) {
